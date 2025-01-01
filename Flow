@@ -1,0 +1,144 @@
+
+local a=Instance.new"ScreenGui"
+local b=Instance.new"Frame"
+local c=Instance.new"UICorner"
+local d=Instance.new"TextLabel"
+local e=Instance.new"TextLabel"
+local f=Instance.new"TextButton"
+local g=Instance.new"UICorner"
+local h=Instance.new"TextBox"
+local i=Instance.new"UICorner"
+local j=Instance.new"TextButton"
+local k=Instance.new"UICorner"
+local l=Instance.new"TextButton"
+local m=Instance.new"UICorner"
+
+
+a.Parent=game.Players.LocalPlayer:WaitForChild"PlayerGui"
+b.Parent=a
+d.Parent=b
+e.Parent=b
+f.Parent=b
+h.Parent=b
+j.Parent=b
+l.Parent=b
+
+
+c.Parent=b
+g.Parent=f
+i.Parent=h
+k.Parent=j
+m.Parent=l
+
+
+b.BackgroundColor3=Color3.fromRGB(40,40,40)
+b.Size=UDim2.new(0,400,0,350)
+b.Position=UDim2.new(0.5,-200,0.5,-175)
+b.Draggable=true
+b.Active=true
+b.Selectable=true
+
+c.CornerRadius=UDim.new(0,15)
+
+
+d.Text="Arbix Hub"
+d.Font=Enum.Font.SourceSansBold
+d.TextSize=24
+d.TextColor3=Color3.fromRGB(255,255,255)
+d.BackgroundTransparency=1
+d.Size=UDim2.new(1,0,0,50)
+d.Position=UDim2.new(0,0,0,0)
+
+
+e.Text="Made By xBatuhan2"
+e.Font=Enum.Font.SourceSans
+e.TextSize=18
+e.TextColor3=Color3.fromRGB(200,200,200)
+e.BackgroundTransparency=1
+e.Size=UDim2.new(1,0,0,30)
+e.Position=UDim2.new(0,0,0,50)
+
+
+f.Text="Inf Flow"
+f.Font=Enum.Font.SourceSansBold
+f.TextSize=20
+f.TextColor3=Color3.fromRGB(255,255,255)
+f.BackgroundColor3=Color3.fromRGB(70,130,180)
+f.Size=UDim2.new(0,200,0,50)
+f.Position=UDim2.new(0.5,-100,0,90)
+
+g.CornerRadius=UDim.new(0,10)
+
+
+h.PlaceholderText="Enter Flow Value"
+h.Font=Enum.Font.SourceSans
+h.TextSize=18
+h.TextColor3=Color3.fromRGB(0,0,0)
+h.BackgroundColor3=Color3.fromRGB(255,255,255)
+h.Size=UDim2.new(0,200,0,40)
+h.Position=UDim2.new(0.5,-100,0,160)
+
+i.CornerRadius=UDim.new(0,10)
+
+
+j.Text="Start"
+j.Font=Enum.Font.SourceSansBold
+j.TextSize=20
+j.TextColor3=Color3.fromRGB(255,255,255)
+j.BackgroundColor3=Color3.fromRGB(34,139,34)
+j.Size=UDim2.new(0,100,0,40)
+j.Position=UDim2.new(0.5,-50,0,210)
+
+k.CornerRadius=UDim.new(0,10)
+
+
+l.Text="Close"
+l.Font=Enum.Font.SourceSansBold
+l.TextSize=20
+l.TextColor3=Color3.fromRGB(255,255,255)
+l.BackgroundColor3=Color3.fromRGB(255,69,69)
+l.Size=UDim2.new(0,100,0,40)
+l.Position=UDim2.new(0.5,-50,0,260)
+
+m.CornerRadius=UDim.new(0,10)
+
+
+f.MouseButton1Click:Connect(function()
+for n,o in ipairs(game.Players:GetPlayers())do
+local p=o:FindFirstChild"PlayerStats"
+if p then
+local q=p:FindFirstChild"InFlow"
+if q and q:IsA"BoolValue"then
+q.Value=true
+end
+end
+end
+print"InFlow Değeri Aktifleştirildi!"
+end)
+
+j.MouseButton1Click:Connect(function()
+local n=h.Text
+
+if n and n~=""then
+for o,p in ipairs(game.Players:GetPlayers())do
+local q=p:FindFirstChild"PlayerStats"
+if q then
+local r=q:FindFirstChild"Flow"
+if r and r:IsA"StringValue"then
+r.Value=n
+print(p.Name.." için Flow değeri ayarlandı: "..n)
+else
+warn(p.Name.." için 'Flow' StringValue bulunamadı!")
+end
+else
+warn(p.Name.." için 'PlayerStats' bulunamadı!")
+end
+end
+else
+print"Lütfen geçerli bir değer girin!"
+end
+end)
+
+l.MouseButton1Click:Connect(function()
+a:Destroy()
+end)
